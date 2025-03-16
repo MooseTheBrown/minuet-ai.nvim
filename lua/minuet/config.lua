@@ -75,6 +75,7 @@ local default_fim_suffix = function(_, context_after_cursor)
     return context_after_cursor
 end
 
+
 --- Configuration for formatting chat input to the LLM
 ---@class ChatInput
 ---@field template string Template string with placeholders for context parts
@@ -293,6 +294,17 @@ M.provider_options = {
         template = M.default_fim_template,
         optional = {
             stop = nil,
+            max_tokens = nil,
+        },
+    },
+    gigachat = {
+        model = 'GigaChat',
+        end_point = 'https://gigachat.devices.sberbank.ru/api/v1/chat/completions',
+        auth_end_point = 'https://ngw.devices.sberbank.ru:9443/api/v2/oauth',
+        api_key = 'GIGACHAT_API_KEY',
+        name = "GigaChat",
+        stream = false,
+        optional = {
             max_tokens = nil,
         },
     },

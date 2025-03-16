@@ -359,7 +359,9 @@ function M.make_chat_llm_shot(context, template)
 end
 
 function M.no_stream_decode(response, exit_code, data_file, provider, get_text_fn)
-    os.remove(data_file)
+    if data_file != '' then
+        os.remove(data_file)
+    end
 
     if exit_code ~= 0 then
         if exit_code == 28 then
